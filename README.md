@@ -5,7 +5,7 @@
 ```shell=
 $ bash train.sh
 ```
-# 測試
+## 測試
 在目錄底下輸入以下指令即可測試訓練好的IDEA-CCNL/Wenzhong-GPT2-110M模型
 ```shell=
 $ python chat.py --path output/ppo-models/Wenzhong-GPT2-110M/actor_ema \
