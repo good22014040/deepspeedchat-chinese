@@ -22,12 +22,12 @@ train.sh中有透過data/generate_data.py產生訓練資料
 執行時會從drc-8/chinese-rm-static下載資料，如果沒有權限也可讀取本地檔案，格式請依照example_format，並透過train_data_path/eval_data_path指定參數
 |Args|Explanation|
 |-|-|
-|tokenizer_name_or_path|使用甚麼模型的tokenizer|
-|train_data_path|訓練資料的路徑|
-|eval_data_path|評估資料的路徑|
-|human_text|人類prompt前的內容|
-|assistant_text|模型response前的內容|
-|data_split|資料怎麼分配，3個數值代表sft, rm, ppo階段得到的數據比例|
+|--tokenizer_name_or_path|使用甚麼模型的tokenizer|
+|--train_data_path|訓練資料的路徑|
+|--eval_data_path|評估資料的路徑|
+|--human_text|人類prompt前的內容|
+|--assistant_text|模型response前的內容|
+|--data_split|資料怎麼分配，3個數值代表sft, rm, ppo階段得到的數據比例|
 |--split|要不要切成sft, rm, ppo|
 |--max_length|prompt+response的最大長度|
 |--prompt_max_length|prompt的最大長度|
