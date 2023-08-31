@@ -1,0 +1,39 @@
+#!/bin/bash
+# Copyright (c) Microsoft Corporation.
+# SPDX-License-Identifier: Apache-2.0
+
+# DeepSpeed Team
+
+# running command
+# cd Delta-Chat/training/step2_reward_model_finetuning
+# bash training_scripts/run_Wenzhong-GPT2-110M.sh ../../output/reward-models/Wenzhong-GPT2-110M
+OUTPUT=$1
+ZERO_STAGE=$2
+if [ "$OUTPUT" == "" ]; then
+    OUTPUT=./output
+fi
+if [ "$ZERO_STAGE" == "" ]; then
+    ZERO_STAGE=0
+fi
+mkdir -p $OUTPUT
+
+deepspeed main.py \
+   --data_path local/rm_jsonfile \
+   --data_split 0,1,0 \
+   --model_name_or_path ../../output/actor-models/Wenzhong-GPT2-110M \
+   --num_padding_at_beginning 0 \
+   --per_device_train_batch_size 4 \
+   --per_device_eval_batch_size 4 \
+   --max_seq_len 1024 \
+   --learning_rate 5e-6 \
+   --weight_decay 0.1 \
+   --num_train_epochs 1 \
+   --disable_dropout \
+   --gradient_accumulation_steps 2 \
+   --lr_scheduler_type cosine \
+   --num_warmup_steps 2000 \
+   --seed 1234 \
+   --zero_stage $ZERO_STAGE \
+   --deepspeed \
+   --output_dir $OUTPUT \
+   &> $OUTPUT/training.log

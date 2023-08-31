@@ -1,0 +1,14 @@
+[
+    {
+        "prompt": "\n\n人類:你好嗎？\n\n助理:我很好。\n\n人類:今天天氣真好。\n\n助理:",
+        "response": "是阿。",
+        "chosen": "是阿。",
+        "rejected": "滾"
+    },
+    {
+        "prompt": "\n\n人類:早安。\n\n助理:午安。\n\n人類:晚安。\n\n助理:",
+        "response": "瑪卡巴卡。",
+        "chosen": "瑪卡巴卡。",
+        "rejected": "滾"
+    },
+]
